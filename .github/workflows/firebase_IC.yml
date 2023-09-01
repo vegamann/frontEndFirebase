@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout código
         uses: actions/checkout@v2
+      -name: pwd
+        run: pwd
 
       - name: Configurar Node.js
         uses: actions/setup-node@v2

@@ -12,9 +12,8 @@ jobs:
     steps:
       - name: Checkout código
         uses: actions/checkout@v2
-      -name: pwd
-        run: pwd
-
+      - name: ingreso a carpeta
+        run: cd frontEndFirebase
       - name: Configurar Node.js
         uses: actions/setup-node@v2
         with:

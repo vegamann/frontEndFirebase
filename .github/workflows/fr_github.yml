@@ -9,7 +9,7 @@ jobs:
 # Run multiple commands using the runners shell
     steps:
       - uses: actions/checkout@v2
-      name: nav
+      - name: nav
         run: cd ./FrontendABCjobs
       - name: Install Dependencies
         run: |

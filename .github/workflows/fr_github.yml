@@ -1,30 +1,28 @@
-name: Deploy Angular to Firebase
-
-on:
+name: Deploy to Firebase Hosting on merge
+'on': 
   push:
     branches:
-      - main # Puedes cambiar esto según tu rama principal
-
+      - main
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
+# Run multiple commands using the runners shell
     steps:
-      - name: Checkout código
-        uses: actions/checkout@v2
-
-      - name: Navegar al directorio del proyecto Angular
-        run: cd FrontendABCjobs # Reemplaza con la ruta correcta a tu proyecto
- 
-      - name: Configurar Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '14'
-      - name: navegar
+      - uses: actions/checkout@v2
+      name: nav
         run: cd ./FrontendABCjobs
+      - name: Install Dependencies
+        run: |
+          sudo npm i
+          sudo npm i -g firebase-tools
+      - name: Run Tests
+        run: npm run test
+      - name: Build Prod App
+        run: |
+          npm run build --if-present
       - uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_ABCJOBS_DBA74 }}'
-          projectId: abcjobs-dba74
-          path: ./FrontendABCjobs
+      with:
+        repoToken: '${{ secrets.GITHUB_TOKEN }}'
+        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}'
+        channelId: live
+        projectId: project_id

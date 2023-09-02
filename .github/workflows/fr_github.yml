@@ -17,7 +17,7 @@ jobs:
         run: cd FrontendABCjobs # Reemplaza con la ruta correcta a tu proyecto
  
       - name: Configurar Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: '14'
       - name: navegar

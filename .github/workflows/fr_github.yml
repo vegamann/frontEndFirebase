@@ -22,15 +22,6 @@ jobs:
           node-version: '14'
       - name: navegar
         run: cd ./FrontendABCjobs
-      - name: Instalar Firebase CLI
-        run: npm install -g firebase-tools
-
-      - name: Instalar dependencias
-        run: npm install
-
-      - name: Compilar la aplicación Angular
-        run: ng build --prod
-
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
